@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %} <!--Bu şekilde static altındaki dosyalara erişebiliriz-->
+{%block content%}
+
+<h1>AddTweetbyForm Page</h1>
+
+<div class="container tweetform">   <!--Css verdiğimiz ismi containir'ın yanında belirtiyorum-->
+  <form action="" method="POST">
+    {% csrf_token %}   <!-- Sistem açığı olmaması için alınan bir önlemdir hata almamak için yazıyoruz-->
+
+    {%for field in form%}
+    <div class="mb-3">
+      {{field.label_tag}}
+      {{field}}
+    </div>
+    {%endfor%}
+    
+    <button type="submit" class="btn btn-primary">Send Tweet</button>
+  </form>
+</div>
+{%endblock%}
+    
